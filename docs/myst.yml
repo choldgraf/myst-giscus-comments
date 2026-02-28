@@ -1,0 +1,7 @@
+version: 1
+project:
+  plugins:
+    - ../src/giscus.mjs
+site:
+  # NOTE: Run `make deploy-book` in myst-theme first to generate .deploy/book
+  template: ../../myst-theme/.deploy/book
