@@ -15,6 +15,7 @@ function render({ model, el }) {
   // Build the giscus iframe URL
   const term = window.location.pathname;
   const params = new URLSearchParams({
+    origin: window.location.origin,
     repo,
     repoId,
     category,
@@ -29,12 +30,21 @@ function render({ model, el }) {
     lang,
   });
 
+  // Style the container
+  el.style.marginTop = '2rem';
+  el.style.paddingTop = '1.5rem';
+  el.style.borderTop = '1px solid rgba(128, 128, 128, 0.3)';
+
   const iframe = document.createElement('iframe');
   iframe.src = `https://giscus.app/widget?${params}`;
+  iframe.className = 'giscus-frame';
+  iframe.title = 'Comments';
   iframe.setAttribute('scrolling', 'no');
+  iframe.setAttribute('allow', 'clipboard-write');
   iframe.style.width = '100%';
   iframe.style.border = 'none';
   iframe.style.minHeight = '150px';
+  iframe.style.colorScheme = 'normal';
 
   el.appendChild(iframe);
 
